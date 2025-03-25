@@ -1,12 +1,38 @@
 import { Image, StyleSheet, Platform } from 'react-native';
-
+//import { View, Text,  StyleSheet, Pressable, SafeAreaView } from 'react-native';
+//import { Link, Stack } from 'expo-router';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useCameraPermissions } from "expo-camera";
 
 export default function HomeScreen() {
+
+  const [ permissions, requestPermission] = useCameraPermissions();
+
   return (
+    // <SafeAreaView style={styles.container}>
+    //   <Stack.Screen options={{ title: "Overview", headerShown: false }} />
+    //   <Text style={styles.title}>QR Code Scanner</Text>
+    //   <View style={{ gap: 20 }}>
+    //     <Pressable onPress={requestPermission}>
+    //       <Text style={styles.buttonStyle}>Request Permissions</Text>
+    //     </Pressable>
+    //     <Link href={"/scanner"} asChild>
+    //       <Pressable disabled={!isPermissionGranted}>
+    //         <Text
+    //           style={[
+    //             styles.buttonStyle,
+    //             { opacity: !isPermissionGranted ? 0.5 : 1 },
+    //           ]}
+    //         >
+    //           Scan Code
+    //         </Text>
+    //       </Pressable>
+    //     </Link>
+    //   </View>
+    // </SafeAreaView>
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={

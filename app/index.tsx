@@ -6,6 +6,8 @@ export default function Index() {
 
   const [ permission, requestPermission] = useCameraPermissions();
 
+  const isPermissionGranted = Boolean(permission?.granted)
+
   return (
     <SafeAreaView>
       <Stack.Screen options = {{ title: "Overview", headerShown: false}}/>
@@ -17,6 +19,16 @@ export default function Index() {
         <Pressable onPress={requestPermission}>
           <Text style = {styles.button}>Request Permissions</Text>
         </Pressable>
+        <Link href={"/scanner"} asChild>
+          <Pressable disabled={!isPermissionGranted}>
+            <Text style={[
+              styles.button,
+              {opacity: !isPermissionGranted ? 0.5 : 1}
+            ]}>
+              Scan Code
+            </Text>
+          </Pressable>
+        </Link>
       </View>
     </SafeAreaView>
   );
@@ -25,7 +37,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
+    backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center',
   },
